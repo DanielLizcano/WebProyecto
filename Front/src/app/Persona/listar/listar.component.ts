@@ -10,13 +10,13 @@ import { Persona } from 'src/app/Modelo/Persona';
 })
 export class ListarComponent implements OnInit {
 
-  personas: Persona[];
+  persona: Persona[];
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.service.getPersonas()
+    this.service.getPersona()
       .subscribe(data => {
-        this.personas = data;
+        this.persona = data;
       });
   }
   Editar(persona:Persona):void{
@@ -27,7 +27,7 @@ export class ListarComponent implements OnInit {
   Delete(persona:Persona){
     this.service.deletePersona(persona)
     .subscribe(data=>{
-      this.personas=this.personas.filter(p=>p!==persona);
+      this.persona=this.persona.filter(p=>p!==persona);
       alert("Usuario eliminado...");
     })
   }
